@@ -3,38 +3,59 @@ using System.Collections;
 
 public class DisplayMessage : MonoBehaviour
 {
-	public bool showText = false;
-	public GameObject obj;
-	public Camera c;
-	private float x, y;
-	public string message;
-	public float time;
+    private bool showText = false;
+    private bool keyPressed = false;
+    public GameObject obj;
+    public Camera c;
+    private float x, y;
+    public string message;
+    public float time;
+    public float yModifier, xModifier;
+    private float timeCount = 0;
 
-	// Use this for initialization
-	void Start ()
-	{
-	}
+    // Use this for initialization
+    void Start()
+    {
+    }
 
-	// Update is called once per frame
-	void Update ()
-	{
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && showText)
+        {
+            keyPressed = true;
+        }
+        if (keyPressed)
+        {
+            timeCount += Time.deltaTime;
+        }
+        if (timeCount > time)
+        {
+            keyPressed = false;
+            timeCount = 0;
+        }
+    }
 
-	IEnumerator OnTriggerEnter2D(Collider2D coll)
-	{
-		Vector3 p = c.WorldToScreenPoint(obj.transform.position);
-		x = p.x;
-		y = Screen.currentResolution.height - p.y - 200;
-		showText = true;
-		yield return new WaitForSeconds(time);
-		showText = false;
-	}
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        Vector3 p = c.WorldToScreenPoint(obj.transform.position);
+        x = p.x+xModifier;
+        y = p.y+yModifier;
+        showText = true;
+    }
 
-	void OnGUI ()
-	{
-		Rect textArea = new Rect(x,y,200,200);
-		if (showText) {			
-			GUI.Label (textArea, message);
-		}
-	}
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        showText = false;
+        keyPressed = false;
+    }
+
+    void OnGUI()
+    {
+        Rect textArea = new Rect(x, y, 200, 200);
+        if (showText && keyPressed)
+        {
+            GUI.Label(textArea, message);
+        }
+    }
 }

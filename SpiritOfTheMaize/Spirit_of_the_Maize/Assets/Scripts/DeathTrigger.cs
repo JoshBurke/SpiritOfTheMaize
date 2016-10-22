@@ -7,7 +7,7 @@ public class DeathTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        coll.gameObject.transform.position = new Vector2(0, 0); //resets position
+        coll.gameObject.transform.position = new Vector2(-15, 0); //resets position
         coll.gameObject.transform.localRotation = Quaternion.identity; //resets rotation
     }
 
