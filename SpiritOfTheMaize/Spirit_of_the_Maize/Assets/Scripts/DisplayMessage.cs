@@ -3,7 +3,8 @@ using System.Collections;
 
 public class DisplayMessage : MonoBehaviour
 {
-	public bool showText = false;
+	private bool showText = false;
+	private bool keyPressed = false;
 	public GameObject obj;
 	public Camera c;
 	private float x, y;
@@ -18,22 +19,32 @@ public class DisplayMessage : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Input.GetKeyDown (KeyCode.E) && showText) {
+			keyPressed = true;
+		}
+		if (Input.GetKeyDown (KeyCode.X)) {
+			keyPressed = false;
+		}
 	}
 
-	IEnumerator OnTriggerEnter2D(Collider2D coll)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
-		Vector3 p = c.WorldToScreenPoint(obj.transform.position);
+		Vector3 p = c.WorldToScreenPoint (obj.transform.position);
 		x = p.x;
 		y = Screen.currentResolution.height - p.y - 200;
 		showText = true;
-		yield return new WaitForSeconds(time);
+	}
+
+	void OnTriggerExit2D(Collider2D coll)
+	{
 		showText = false;
+		keyPressed = false;
 	}
 
 	void OnGUI ()
 	{
 		Rect textArea = new Rect(x,y,200,200);
-		if (showText) {			
+		if (showText && keyPressed) {
 			GUI.Label (textArea, message);
 		}
 	}
