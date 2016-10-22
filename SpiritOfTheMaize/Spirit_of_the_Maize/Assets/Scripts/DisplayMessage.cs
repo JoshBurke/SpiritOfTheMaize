@@ -10,6 +10,7 @@ public class DisplayMessage : MonoBehaviour
 	private float x, y;
 	public string message;
 	public float time;
+	private float timeCount = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -22,8 +23,12 @@ public class DisplayMessage : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.E) && showText) {
 			keyPressed = true;
 		}
-		if (Input.GetKeyDown (KeyCode.X)) {
+		if (keyPressed) {
+			timeCount += Time.deltaTime;
+		}
+		if (timeCount > time ) {
 			keyPressed = false;
+			timeCount = 0;
 		}
 	}
 
