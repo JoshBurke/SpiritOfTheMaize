@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPos: {x: 0, y: 0}
+  deathCounter: 0
 --- !u!1 &108068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPos: {x: 0, y: 0}
+  deathCounter: 0
 --- !u!61 &428896584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -482,7 +484,6 @@ MonoBehaviour:
   moveForce: 365
   maxSpeed: 5
   jumpForce: 750
-  groundCheck: {fileID: 1447718332}
   grounded: 0
 --- !u!1 &901598274
 GameObject:
@@ -584,7 +585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e75fe7a7dce2864e889f7a9f9734742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 611971295}
 --- !u!82 &901598281
 AudioSource:
   m_ObjectHideFlags: 0
@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPos: {x: 0, y: 0}
+  deathCounter: 0
 --- !u!61 &970145608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPos: {x: 0, y: 0}
+  deathCounter: 0
 --- !u!58 &2076400599
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1094,6 +1096,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba066a241a22ed14d856c51b4cea398e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patroller: {fileID: 0}
   end: {x: 5, y: 0}
   speed: 10

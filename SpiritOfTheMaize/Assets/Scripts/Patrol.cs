@@ -5,14 +5,19 @@ public class Patrol : MonoBehaviour {
 
 	//don't forgot to add a rigidbody2d to the patroller
 
-	public GameObject patroller;
+	private GameObject patroller; //holds the object doing the patrolling
+
 	private Vector2 start;
 	public Vector2 end;
+
+	public float speed; //speed, self explanatory
+
 	private float deltaX; //xy distances from start to end
 	private float deltaY;
+
 	private float lastX; //hold the xy of either start or end, whichever was visited last
 	private float lastY;
-	public float speed; //speed, self explanatory
+
 	private Rigidbody2D rb2d;
 
 	void Start () {
@@ -33,6 +38,7 @@ public class Patrol : MonoBehaviour {
 	{
 		if (Mathf.Abs (patroller.transform.position.x - lastX) >= deltaX || Mathf.Abs (patroller.transform.position.y - lastY) >= deltaY) {
 			rb2d.velocity = new Vector2 (-1 * rb2d.velocity.x, -1 * rb2d.velocity.y); //reverses direction
+
 			lastX = patroller.transform.position.x;
 			lastY = patroller.transform.position.y;
 		}

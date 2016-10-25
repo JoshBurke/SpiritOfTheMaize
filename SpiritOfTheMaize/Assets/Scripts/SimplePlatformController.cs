@@ -1,17 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//A quick rundown of how to use this
-//First create an object, doesn't especially matter what
-//add a RigidBody2D, a BoxCollider2D, and this script
-//also add a child empty object called specifically "groundCheck"
-//Also make both everything is on layer 'player'
-//groundCheck should be positioned below the object proper, it needs to be IN the ground while the object is on it
-//Now create some ground to stand on, this works with anything but I suggest you start with a cube
-//change the proportions to make a long and thing rectangle to serve as ground
-//change it's layer to ground and add a BoxCollider2D
-
-
 public class SimplePlatformController : MonoBehaviour {
 
 	[HideInInspector] public bool facingRight = true;
@@ -20,7 +9,8 @@ public class SimplePlatformController : MonoBehaviour {
     public float moveForce = 365f; //how fast the player accelerates
     public float maxSpeed = 5f; //how fast player can move
     public float jumpForce = 750f; //how high player can jump
-    public Transform groundCheck; //located
+    private Transform groundCheck; //you must have a child transform to the gameObject 
+	//named specifically groundCheck that is positioned slightly below the object's boxCollider
 	Animator anim;
     public bool grounded = false;
     private Rigidbody2D rb2d;
@@ -30,6 +20,7 @@ public class SimplePlatformController : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator> ();
+		groundCheck = transform.Find ("groundCheck");
 	}
 	
 	// Update is called once per frame
