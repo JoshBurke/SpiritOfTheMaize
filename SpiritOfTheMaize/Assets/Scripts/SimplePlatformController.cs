@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//A quick rundown of how to use this
+//First create an object, doesn't especially matter what
+//add a RigidBody2D, a BoxCollider2D, and this script
+//also add a child empty object called specifically "groundCheck"
+//Also make both everything is on layer 'player'
+//groundCheck should be positioned below the object proper, it needs to be IN the ground while the object is on it
+//Now create some ground to stand on, this works with anything but I suggest you start with a cube
+//change the proportions to make a long and thing rectangle to serve as ground
+//change it's layer to ground and add a BoxCollider2D
+
+
 public class SimplePlatformController : MonoBehaviour {
 
 	[HideInInspector] public bool facingRight = true;
@@ -9,18 +20,17 @@ public class SimplePlatformController : MonoBehaviour {
     public float moveForce = 365f; //how fast the player accelerates
     public float maxSpeed = 5f; //how fast player can move
     public float jumpForce = 750f; //how high player can jump
-    private Transform groundCheck; //you must have a child transform to the gameObject 
-	//named specifically groundCheck that is positioned slightly below the object's boxCollider
-	Animator anim;
+    public Transform groundCheck; //located
+
     public bool grounded = false;
     private Rigidbody2D rb2d;
 
     
     // Use this for initialization
 	void Start () {
-		rb2d = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator> ();
-		groundCheck = transform.Find ("groundCheck");
+        rb2d = GetComponent<Rigidbody2D>();
+        groundCheck = GameObject.Find("groundCheck").transform;
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 	
 	// Update is called once per frame
@@ -29,16 +39,6 @@ public class SimplePlatformController : MonoBehaviour {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         //sees if any part of a line between the player and groundCheck is on the ground layer
 
-		anim.SetInteger ("State", 1);
-
-		if (Mathf.Abs (rb2d.velocity.x) > 0) {
-			anim.SetInteger ("State", 2);
-		}
-
-		if (!grounded) {
-			anim.SetInteger ("State", 4);
-		}
-			
         if ((Input.GetKeyDown(KeyCode.Space) && grounded))
             jump = true;
 
@@ -62,7 +62,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
-			jump = false;
+            jump = false;
         }
 
     }
@@ -79,4 +79,15 @@ public class SimplePlatformController : MonoBehaviour {
     {
         gameObject.transform.position = new Vector2(0, 1);
     }
+
+    /**
+     * This method is for use in the PlayerSounds script
+     * -Josh
+     **/
+    public bool isJumping()
+    {
+        if (jump) return true;
+        else return false;
+    }
+
 }
