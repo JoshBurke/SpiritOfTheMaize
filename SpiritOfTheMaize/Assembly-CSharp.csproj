@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\DeathTrigger.cs" />
      <Compile Include="Assets\Scripts\DisplayMessage.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\Patrol.cs" />
      <Compile Include="Assets\Scripts\SimplePlatformController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
