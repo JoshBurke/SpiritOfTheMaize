@@ -21,15 +21,15 @@ public class SimplePlatformController : MonoBehaviour {
     public float maxSpeed = 5f; //how fast player can move
     public float jumpForce = 750f; //how high player can jump
     public Transform groundCheck; //located
-
+	Animator anim;
     public bool grounded = false;
     private Rigidbody2D rb2d;
 
     
     // Use this for initialization
 	void Start () {
-        rb2d = GetComponent<Rigidbody2D>();
-        groundCheck = GameObject.Find("groundCheck").transform;
+		rb2d = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -38,6 +38,16 @@ public class SimplePlatformController : MonoBehaviour {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         //sees if any part of a line between the player and groundCheck is on the ground layer
 
+		anim.SetInteger ("State", 1);
+
+		if (Mathf.Abs (rb2d.velocity.x) > 0) {
+			anim.SetInteger ("State", 2);
+		}
+
+		if (!grounded) {
+			anim.SetInteger ("State", 4);
+		}
+			
         if ((Input.GetKeyDown(KeyCode.Space) && grounded))
             jump = true;
 
@@ -61,7 +71,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
-            jump = false;
+			jump = false;
         }
 
     }
