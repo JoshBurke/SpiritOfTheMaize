@@ -7321,6 +7321,7 @@ GameObject:
   - 50: {fileID: 1719988726}
   - 61: {fileID: 1719988725}
   - 114: {fileID: 1719988724}
+  - 114: {fileID: 1719988727}
   m_Layer: 0
   m_Name: corn (1)
   m_TagString: Untagged
@@ -7339,7 +7340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3a7a86c987b6e46987569d07d689d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 0
+  velocity: 20
 --- !u!61 &1719988725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7371,6 +7372,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1719988727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719988723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ae180dc7999f54585dc7a139c68fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picked: 1
+  error: 100
 --- !u!114 &1719988728
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class AttackedTrigger : MonoBehaviour {
         if (coll.gameObject.name.Contains("corn"))
         {
             Destroy(coll.gameObject); //destroy bullet
-            dead = true;//death animation
+            Destroy(gameObject);//death
         }
     }
 }

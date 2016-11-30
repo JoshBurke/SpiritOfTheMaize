@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\Patrol.cs" />
+     <Compile Include="Assets\Scripts\Pick.cs" />
      <Compile Include="Assets\Scripts\PickUps.cs" />
      <Compile Include="Assets\Scripts\PlayerSounds.cs" />
      <Compile Include="Assets\Scripts\SimplePlatformController.cs" />

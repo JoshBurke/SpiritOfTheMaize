@@ -3,18 +3,21 @@ using System.Collections;
 
 public class CornAttack : MonoBehaviour {
     private GameObject a;
-    public int attack;//power of the corn;input needed.
-    private float speed;//speed of the corn;
     private Vector2 start;
     private bool picked;//whether it is picked up.
     private bool pressed;//whether z is pressed.
+    public int velocity;
+    private bool right;
 
 
 	// Use this for initialization
 	void Start () {
+        Pick otherScript = GetComponent<Pick>();
+        SimplePlatformController otherScript2 = GetComponent<SimplePlatformController>();
+        picked = otherScript.picked;
+        right = otherScript2.facingRight;
         a = gameObject;
         start = a.transform.position;
-        picked = true;//!!!!!test!!!!!!!
         pressed = false;
 	
 	}
@@ -25,10 +28,14 @@ public class CornAttack : MonoBehaviour {
         {
             pressed = true;
         }
-        if (picked && pressed)
+        if (picked && pressed&&right)
         {
-            transform.position += new Vector3(10, 0) * Time.deltaTime;
+            transform.position += new Vector3(velocity, 0) * Time.deltaTime;
         }
-	
-	}
+        if (picked && pressed && !right)
+        {
+            transform.position += new Vector3(-velocity, 0) * Time.deltaTime;
+        }
+
+    }
 }
