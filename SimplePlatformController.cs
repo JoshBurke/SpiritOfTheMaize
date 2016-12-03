@@ -8,9 +8,9 @@ public class SimplePlatformController : MonoBehaviour {
 	[HideInInspector] public bool glide = false; //set true to make player fall slowly
 	public float glideSpeed = 10f;
 
-    public float moveForce = 180f; //how fast the player accelerates
-    public float maxSpeed = 5f; //how fast player can move
-    public float jumpForce = 750f; //how high player can jump
+    public float moveForce = 360f; //how fast the player accelerates
+    public float maxSpeed = 3f; //how fast player can move
+    public float jumpForce = 675f; //how high player can jump
     private Transform groundCheck; //you must have a child transform to the gameObject 
 	//named specifically groundCheck that is positioned slightly below the object's boxCollider
 	Animator anim;
@@ -53,7 +53,7 @@ public class SimplePlatformController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("Horizontal")+1;
 
         if (h * rb2d.velocity.x < maxSpeed)
             rb2d.AddForce(Vector2.right * h * moveForce); //actually moves the player
