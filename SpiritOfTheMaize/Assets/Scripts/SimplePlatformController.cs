@@ -42,8 +42,10 @@ public class SimplePlatformController : MonoBehaviour {
 		}
 			
 		if (Input.GetKeyDown(KeyCode.Space)){
-			if(grounded)
+			if(grounded){
 				jump = true;
+				glide = true;
+			}
 			else
 				glide = true;
 		}
@@ -71,16 +73,15 @@ public class SimplePlatformController : MonoBehaviour {
             rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
         }
-
+	}
+	void LateUpdate()
+	{
 		if (glide) {
 			glide = Input.GetKey (KeyCode.Space);
 			if (rb2d.velocity.y <= -glideSpeed) {
 				rb2d.velocity = new Vector2 (rb2d.velocity.x, -glideSpeed);
-				rb2d.gravityScale = 0;
 			}
 		}
-		else
-			rb2d.gravityScale = 1;
 	}
     void Flip()
     {
