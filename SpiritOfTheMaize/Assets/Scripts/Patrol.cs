@@ -7,7 +7,6 @@ public class Patrol : MonoBehaviour {
 
 	public bool returnTrip; //whether or not the patroller returns along it's original path or resets after moving along it's path, must be input
 
-	public float delay; //time delay in seconds between moves
 	private float timeLeft; //holds time until delay ends
 
 	private Vector2 start; //starting location, ripped from patroller's location in Unity
@@ -30,41 +29,33 @@ public class Patrol : MonoBehaviour {
 
 		start = new Vector2(patroller.transform.position.x,patroller.transform.position.y); //start is patroller's current position
 
-		deltaX = Mathf.Abs(end.x - start.x);
-		deltaY = Mathf.Abs(end.y - start.y);
+		deltaX = Mathf.Abs(end.x);
+		deltaY = Mathf.Abs(end.y);
 
 		lastX = patroller.transform.position.x;
 		lastY = patroller.transform.position.y;
 
-		start.Normalize(); //super secret tech, convets a vector2D to have magnitude 1, but keep it's proportions
-		end.Normalize(); //so it can be used to direct but not effect the speed
+		end.Normalize(); // normalize the end vector
 
-		patrolVelocity = new Vector2 (end.x * speed, end.y * speed);
+		patrolVelocity = new Vector2(end.x*speed,end.y*speed);
 		rb2d.velocity = patrolVelocity;
-
-		timeLeft = delay;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Mathf.Abs (patroller.transform.position.x - lastX) >= deltaX || Mathf.Abs (patroller.transform.position.y - lastY) >= deltaY) {
-			rb2d.velocity = new Vector2 (0f, 0f); //stops patroller until the delay has passed
-			if (timeLeft > 0) {
-				timeLeft -= Time.deltaTime;
-			}
-			else{
+		if (Mathf.Abs(patroller.transform.position.x - lastX) >= deltaX && Mathf.Abs(patroller.transform.position.y - lastY) >= deltaY) {
+			rb2d.velocity = new Vector2 (0f, 0f); 
 			if (returnTrip) {
 				patrolVelocity = new Vector2 (-1 * patrolVelocity.x, -1 * patrolVelocity.y); //reverses direction
 				rb2d.velocity = patrolVelocity; //applies the reversal
 				lastX = patroller.transform.position.x;
 				lastY = patroller.transform.position.y;
-					} else {
+			} else {
 				patroller.transform.position = new Vector2 (lastX, lastY); //resets position
 				rb2d.velocity = new Vector2 (end.x * speed, end.y * speed); //original velocity
 			}
-				timeLeft = delay;
-			}
 		}
+		
 	}
 }

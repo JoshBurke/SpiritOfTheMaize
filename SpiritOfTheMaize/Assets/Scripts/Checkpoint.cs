@@ -10,10 +10,12 @@ public class Checkpoint : MonoBehaviour {
     public checkpointHandler ch;
 
     public Sprite[] sprites;
+    Animator anim;
 
     void Start()
     {
         ch = GameObject.Find("CheckPoint Handler").GetComponent<checkpointHandler>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -26,18 +28,22 @@ public class Checkpoint : MonoBehaviour {
         if(status == state.Inactive)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[0];
+            anim.SetInteger("State", 0);
         }
         else if (status == state.Active)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[1];
+            anim.SetInteger("State", 1);
         }
         else if (status == state.Used)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[2];
+            anim.SetInteger("State", 2);
         }
         else if (status == state.Locked)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[3];
+            anim.SetInteger("State", 2);
         }
     }
 

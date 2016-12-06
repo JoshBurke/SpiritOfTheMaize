@@ -13,8 +13,8 @@ public class Wind : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D coll) {
-		if (coll.gameObject.name.Equals ("player")) {
-			coll.attachedRigidbody.AddForce (windForce * windDirection + coll.attachedRigidbody.velocity);
+		if (coll.gameObject.name.Equals ("player")&&coll.gameObject.GetComponent<SimplePlatformController>().isGliding()==true) {
+			coll.attachedRigidbody.AddForce (windForce * windDirection);
 		}
 	}
 }

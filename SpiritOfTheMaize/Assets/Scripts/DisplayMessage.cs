@@ -20,10 +20,6 @@ public class DisplayMessage : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-//		if (Input.GetKeyDown(KeyCode.E) && showText)
-//		{
-//			keyPressed = true;
-//		}
 		if (showText)
 		{
 			t.enabled = true;
@@ -50,6 +46,5 @@ public class DisplayMessage : MonoBehaviour
 	void OnTriggerExit2D(Collider2D coll)
 	{
 		showText = false;
-		//keyPressed = false;
 	}
 }
