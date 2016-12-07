@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerSounds.cs" />
     <Compile Include="Assets\Scripts\SimplePlatformController.cs" />
+    <Compile Include="Assets\Scripts\WinCon.cs" />
     <Compile Include="Assets\Scripts\Wind.cs" />
     <Compile Include="Assets\Scripts\checkpointHandler.cs" />
     <Compile Include="Assets\Scripts\cornScript.cs" />

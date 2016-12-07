@@ -106,7 +106,6 @@ public class SimplePlatformController : MonoBehaviour {
 		else
 			return false;
 	}
-	//not currently used by anything but I'm fairly certain it will come in handy
 	public bool isFalling(){
 		if (!grounded)
 			return true;
