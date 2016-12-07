@@ -1,14 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Patrol.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PickUpCorn.cs">
     <Files>
       <File FileName="Assets\Scripts\SimplePlatformController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Patrol.cs" Line="47" Column="69" />
+      <File FileName="Assets\Scripts\Patrol.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DeathTrigger.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DisplayMessage.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\checkpointHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\cornScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\cornScript.cs" Line="24" Column="10" />
+      <File FileName="Assets\Scripts\ChangeScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WinCon.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PickUpCorn.cs" Line="35" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,7 +21,7 @@ public class PickUpCorn : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Fire1") && Time.time - timeLastHeld > coolDown)
         {
-            distanceToClosestCorn = new Vector2(1, 1);
+            distanceToClosestCorn = new Vector2(3, 3);
             corn = GameObject.FindGameObjectsWithTag("corn");
             foreach (GameObject kernel in corn)
             {
@@ -32,10 +32,11 @@ public class PickUpCorn : MonoBehaviour {
                     distanceToClosestCorn = (transform.position - cornTransform.position);
                 }
             }
+			if(distanceToClosestCorn.magnitude < 3){
             cornToPickUp.transform.position = transform.position;
             cornBody = cornToPickUp.GetComponent<Rigidbody2D>();
             cornName = cornToPickUp.name;
-            cornHeld = true;
+				cornHeld = true;}
         }
 	}
 
