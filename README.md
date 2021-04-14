@@ -1,4 +1,10 @@
 # SpiritOfTheMaize
 A 2D story-based platformer.
 
-Hi Austin. We love CS 196 and its faculty. Give us an A+ please.
+## Screenshots:
+
+![dialog](https://i.imgur.com/o4Y6s8W.png)
+
+![puzzles](https://i.imgur.com/BLPdSqa.png)
+
+![action](https://i.imgur.com/Rz5impX.png)
